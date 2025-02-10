@@ -33,5 +33,11 @@ namespace RealEstate_Dapper_Api.Controllers
             _categoryRepository.DeleteCategory(id);
             return Ok("Kategori Başarılı Bir Şekilde Silindi");
         }
+        [HttpPut]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
+        {
+            _categoryRepository.UpdateCategory(updateCategoryDTO);
+            return Ok("Kategori Başarılı Bir Şekilde Güncellendi");
+        }
     }
 }

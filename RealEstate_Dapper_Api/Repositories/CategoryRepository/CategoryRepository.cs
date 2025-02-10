@@ -45,5 +45,17 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
                 return values.ToList();
             }
         }
+
+        public async void UpdateCategory(UpdateCategoryDTO categoryDTO)
+        {
+            string query = "UPDATE Category SET CategoryName = @CategoryName, CategoryStatus = @CategoryStatus WHERE CategoryID = @CategoryID";  //Kategori güncellenir
+            var parameters = new DynamicParameters();
+            parameters.Add("@CategoryName", categoryDTO.CategoryName);
+            parameters.Add("@CategoryStatus", categoryDTO.CategoryStatus);
+            using (var connection =_context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
     }
 }
