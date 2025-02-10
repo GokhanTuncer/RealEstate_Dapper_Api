@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate_Dapper_Api", "RealEstate_Dapper_Api\RealEstate_Dapper_Api.csproj", "{17A30CE0-AD60-4F54-AB98-9E523B26237C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17A30CE0-AD60-4F54-AB98-9E523B26237C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A30CE0-AD60-4F54-AB98-9E523B26237C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A30CE0-AD60-4F54-AB98-9E523B26237C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A30CE0-AD60-4F54-AB98-9E523B26237C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1980DD5-4CB0-486A-A436-6EF8E1BEC079}
+	EndGlobalSection
+EndGlobal
