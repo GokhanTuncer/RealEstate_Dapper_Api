@@ -52,6 +52,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
             var parameters = new DynamicParameters();
             parameters.Add("@CategoryName", categoryDTO.CategoryName);
             parameters.Add("@CategoryStatus", categoryDTO.CategoryStatus);
+            parameters.Add("@CategoryID", categoryDTO.CategoryID);
             using (var connection =_context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
