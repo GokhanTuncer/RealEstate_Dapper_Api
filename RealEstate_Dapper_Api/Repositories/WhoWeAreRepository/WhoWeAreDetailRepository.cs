@@ -5,11 +5,11 @@ using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 {
-	public class WhoWeAreRepository : IWhoWeAreRepository
+	public class WhoWeAreDetailRepository : IWhoWeAreDetailRepository
 	{
 		private readonly Context _context;
 
-		public WhoWeAreRepository(Context context)
+		public WhoWeAreDetailRepository(Context context)
 		{
 			_context = context;
 		}
@@ -69,6 +69,7 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 			parameters.Add("@subTitle", updateWhoWeareDetailDTO.SubTitle);
 			parameters.Add("@description1", updateWhoWeareDetailDTO.Description1);
 			parameters.Add("@description2", updateWhoWeareDetailDTO.Description2);
+			parameters.Add("@whoWeAreDetailID", updateWhoWeareDetailDTO.WhoWeAreDetailID);
 			using (var connection = _context.CreateConnection())
 			{
 				await connection.ExecuteAsync(query, parameters);

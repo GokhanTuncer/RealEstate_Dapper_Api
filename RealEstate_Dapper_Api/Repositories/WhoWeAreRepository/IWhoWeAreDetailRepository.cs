@@ -3,7 +3,7 @@ using RealEstate_Dapper_Api.DTOs.WhoWeAreDetailDTOs;
 
 namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 {
-	public interface IWhoWeAreRepository
+	public interface IWhoWeAreDetailRepository
 	{
 		Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeareDetailAsync();
 		void CreateWhoWeareDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO);
