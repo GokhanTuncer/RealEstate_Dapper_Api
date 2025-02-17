@@ -37,12 +37,12 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
             }
         }
 
-        public async Task<List<ResultWhoWeareDetailDTO>> GetAllCategoryAsync()
+        public async Task<List<ResultCategoryDTO>> GetAllCategoryAsync()
         {
             string query= "SELECT * FROM Category";  //Kategori çağırılır
             using(var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultWhoWeareDetailDTO>(query);
+                var values = await connection.QueryAsync<ResultCategoryDTO>(query);
                 return values.ToList();
             }
         }
