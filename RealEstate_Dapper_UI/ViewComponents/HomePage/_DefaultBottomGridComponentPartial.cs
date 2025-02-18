@@ -16,7 +16,7 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44382/api/BottomGrids");
+            var response = await client.GetAsync("https://localhost:44382/api/BottomGrid");
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
