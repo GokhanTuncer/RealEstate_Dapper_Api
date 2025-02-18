@@ -1,6 +1,6 @@
 ﻿namespace RealEstate_Dapper_UI.DTOs.ProductDTOs
 {
-    public class ResultProductDTOs
+    public class ResultProductDTO
     {
         public int productID { get; set; }
         public string title { get; set; }
