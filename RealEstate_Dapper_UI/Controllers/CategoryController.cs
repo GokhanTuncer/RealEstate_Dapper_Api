@@ -44,5 +44,15 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var reponseMessage = await client.DeleteAsync($"https://localhost:44333/api/Categories/{id}");
+            if (reponseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
