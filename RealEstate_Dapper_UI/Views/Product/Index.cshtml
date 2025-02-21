@@ -1,4 +1,4 @@
-﻿@model List<ResultProductDto>
+﻿@model List<ResultProductDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -39,7 +39,9 @@
                                     <td>@item.price</td>
                                     <td>@item.type</td>
                                     <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>                               
+                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-primary">Sitede Gör</a></td>
+                                    
                                 </tr>
                             }
                         </tbody>
