@@ -63,22 +63,42 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticRepository
 
         public int AverageRoomCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Avg(RoomCount) From ProductDetails";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int CategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Category";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string CategoryNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) CategoryName,Count(*) From Product inner join Category On Product.ProductCategory=Category.CategoryID Group By CategoryName order by Count(*) Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string CityNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Top(1) City,Count(*) as 'ilan_Sayısı' From Product Group By City order by ilan_Sayısı Desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int DifferentCityCount()
@@ -95,7 +115,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticRepository
         {
             throw new NotImplementedException();
         }
-
+        
         public string NewestBuildingYear()
         {
             throw new NotImplementedException();
