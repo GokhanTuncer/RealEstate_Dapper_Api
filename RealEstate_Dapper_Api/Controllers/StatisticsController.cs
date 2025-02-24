@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate_Dapper_Api.Repositories.StatisticRepository;
 
 namespace RealEstate_Dapper_Api.Controllers
 {
@@ -7,5 +8,22 @@ namespace RealEstate_Dapper_Api.Controllers
     [ApiController]
     public class StatisticsController : ControllerBase
     {
+        private readonly IStatisticsRepository _statisticsRepository;
+
+        public StatisticsController(IStatisticsRepository statisticsRepository)
+        {
+            _statisticsRepository = statisticsRepository;
+        }
+
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+            return Ok(_statisticsRepository.ActiveCategoryCount());
+        }
+        [HttpGet("ActiveEmployeeCount")]
+        public IActionResult ActiveCEmployeeCount()
+        {
+            return Ok(_statisticsRepository.ActiveEmployeeCount());
+        }
     }
 }
