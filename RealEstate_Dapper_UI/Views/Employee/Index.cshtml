@@ -1,7 +1,8 @@
 ﻿@model List<ResultEmployeeDTO>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Admin/Index.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Admin/Index.cshtml";
+	int count = 0;
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -24,8 +25,9 @@
 						<tbody>
 							@foreach (var item in Model)
 							{
+								count++;
 								<tr>
-									<th scope="row">@item.EmployeeID</th>
+									<th scope="row">@count</th>
 									<td>@item.Name</td>
 									<td>@item.Title</td>
 									<td><a href="/Employee/DeleteEmployee/@item.EmployeeID" class="btn btn-outline-danger">Sil</a></td>
