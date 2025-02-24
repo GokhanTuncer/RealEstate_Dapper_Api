@@ -46,7 +46,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticRepository
             string query = "Select Avg(Price) From Product where Type='Kiralık'";
             using (var connection = _context.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(query);
+                var values = connection.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }
@@ -56,7 +56,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticRepository
             string query = "Select Avg(Price) From Product where Type='Satılık'";
             using (var connection = _context.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(query);
+                var values = connection.QueryFirstOrDefault<decimal>(query);
                 return values;
             }
         }

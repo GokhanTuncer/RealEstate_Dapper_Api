@@ -30,5 +30,15 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             return Ok(_statisticsRepository.ApartmentCount());
         }
+        [HttpGet("AverageProductPriceByRent")]
+        public IActionResult AverageProductPriceByRent()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceByRent());
+        }
+        [HttpGet("AverageProductPriceBySale")]
+        public IActionResult AverageProductPriceBySale()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceBySale());
+        }
     }
 }
