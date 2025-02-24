@@ -1,4 +1,4 @@
-﻿namespace RealEstate_Dapper_Api.DTOs.EmployeeDTOs
+﻿namespace RealEstate_Dapper_UI.DTOs.EmployeeDTOs
 {
     public class UpdateEmployeeDTO
     {
