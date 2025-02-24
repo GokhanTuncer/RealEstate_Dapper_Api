@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_Dapper_Api.DTOs.EmployeeDTOs;
+using RealEstate_Dapper_UI.DTOs.EmployeeDTOs;
+using System.Net.Http;
+using System.Text;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
@@ -16,7 +18,7 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44333/api/Employees");
+            var responseMessage = await client.GetAsync("https://localhost:44382/api/Employees");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -25,5 +27,24 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-    }
+		[HttpGet]
+		public IActionResult CreateEmployee()
+		{
+			return View();
+		}
+		[HttpPost]
+		public async Task<IActionResult> CreateEmployee(CreateEmployeeDTO createEmployeeDTO)
+		{
+			var client = _httpClientFactory.CreateClient();
+			var jsonData = JsonConvert.SerializeObject(createEmployeeDTO);
+			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+			var responseMessage = await client.PostAsync("https://localhost:44382/api/Employees", stringContent);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+	}
+	
 }
