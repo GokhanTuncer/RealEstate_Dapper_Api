@@ -17,7 +17,7 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44382/api/WhoWeAres");
+            var responseMessage = await client.GetAsync("https://localhost:44382/api/WhoWeAreDetail");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -27,27 +27,27 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateWhoWeAre()
+        public IActionResult CreateWhoWeAreDetail()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateWhoWeAre(CreateWhoWeAreDetailDTO createWhoWeAreDTO)
+        public async Task<IActionResult> CreateWhoWeAreDetail(CreateWhoWeAreDetailDTO createWhoWeAreDTO)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createWhoWeAreDTO);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44382/api/WhoWeAres", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:44382/api/WhoWeAreDetail", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View();
         }
-        public async Task<IActionResult> DeleteWhoWeAre(int id)
+        public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var reponseMessage = await client.DeleteAsync($"https://localhost:44382/api/WhoWeAres/{id}");
+            var reponseMessage = await client.DeleteAsync($"https://localhost:44382/api/WhoWeAreDetail/{id}");
             if (reponseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -55,7 +55,7 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> UpdateWhoWeAre(int id)
+        public async Task<IActionResult> UpdateWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:44382/api/WhoWeAreDetail/{id}");
@@ -68,7 +68,7 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateWhoWeAre(UpdateWhoWeAreDetailDTO updateWhoWeAreDto)
+        public async Task<IActionResult> UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDTO updateWhoWeAreDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateWhoWeAreDto);
