@@ -25,11 +25,27 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         public async Task<List<ResultProductWithCategoryDTO>> GetAllProductWithCategoryAsync()
         {
 
-            string query = "SELECT ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address FROM Product INNER JOIN Category on Product.ProductCategory=Category.CategoryID";
+            string query = "SELECT ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay FROM Product INNER JOIN Category on Product.ProductCategory=Category.CategoryID";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDTO>(query);
                 return values.ToList();
+            }
+        }
+
+        public void ProductDealOfTheDayStatusChangeToFalse(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void ProductDealOfTheDayStatusChangeToTrue(int id)
+        {
+            string query = "Update Product Set DealOfTheDay=True where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId",id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }
