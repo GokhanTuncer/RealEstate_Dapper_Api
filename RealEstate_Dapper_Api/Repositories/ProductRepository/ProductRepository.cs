@@ -33,14 +33,20 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public void ProductDealOfTheDayStatusChangeToFalse(int id)
+        public async void ProductDealOfTheDayStatusChangeToFalse(int id)
         {
-            throw new NotImplementedException();
+            string query = "Update Product Set DealOfTheDay=0 where ProductID=@productID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
         }
 
         public async void ProductDealOfTheDayStatusChangeToTrue(int id)
         {
-            string query = "Update Product Set DealOfTheDay=True where ProductID=@productID";
+            string query = "Update Product Set DealOfTheDay=1 where ProductID=@productID";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeId",id);
             using (var connection = _context.CreateConnection())
