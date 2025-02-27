@@ -27,12 +27,12 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult CreateServiceDetail()
+        public IActionResult CreateService()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateServiceDetail(CreateServiceDTO createServiceDTO)
+        public async Task<IActionResult> CreateService(CreateServiceDTO createServiceDTO)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createServiceDTO);
@@ -44,7 +44,7 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> DeleteServiceDetail(int id)
+        public async Task<IActionResult> DeleteService(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var reponseMessage = await client.DeleteAsync($"https://localhost:44382/api/Services/{id}");
@@ -55,7 +55,7 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> UpdateServiceDetail(int id)
+        public async Task<IActionResult> UpdateService(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:44382/api/Services/{id}");
@@ -68,7 +68,7 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateServiceDetail(UpdateServiceDTO updateServiceDto)
+        public async Task<IActionResult> UpdateService(UpdateServiceDTO updateServiceDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateServiceDto);
