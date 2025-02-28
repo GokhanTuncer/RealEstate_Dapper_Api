@@ -35,7 +35,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
 		public async Task<List<ResultProductDTO>> GetLast5ProductAsync()
 		{
-			string query = "SELECT Top(5) * FROM Product Order By ProductID Desc";
+			string query = "SELECT Top(5) * FROM Product Where Type='Kiralık' Order By ProductID Desc";
 			using (var connection = _context.CreateConnection())
 			{
 				var values = await connection.QueryAsync<ResultProductDTO>(query);
