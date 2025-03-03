@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.DTOs.ContactDTOs;
 
 namespace RealEstate_Dapper_UI.ViewComponents.Dashboard
 {
@@ -19,7 +20,7 @@ namespace RealEstate_Dapper_UI.ViewComponents.Dashboard
 			if (response.IsSuccessStatusCode)
 			{
 				var jsonData = await response.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultCategoryDTO>>(jsonData);
+				var values = JsonConvert.DeserializeObject<List<Last4ContactResultDTO>>(jsonData);
 				return View(values);
 			}
 			return View();
