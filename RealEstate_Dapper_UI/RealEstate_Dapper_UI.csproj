@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate_Dapper_Api\RealEstate_Dapper_Api.csproj" />
+  </ItemGroup>
+
 </Project>
