@@ -30,6 +30,9 @@ builder.Services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepositor
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<ITodoListRepository, ToDoListRepository>();
 
+builder.Services.AddHttpClient();
+
+builder.Services.AddSignalR();
 builder.Services.AddCors(opt=>
 {
     opt.AddPolicy("CorsPolicy", builder =>
@@ -42,7 +45,6 @@ builder.Services.AddCors(opt=>
 
     });
 });
-builder.Services.AddSignalR();
 
 
 builder.Services.AddControllers();
