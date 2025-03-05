@@ -47,7 +47,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         {
             string query = "SELECT ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay FROM Product INNER JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID =@employeeID";
             var paramaters = new DynamicParameters();
-            paramaters.Add("@employeeId", id);
+            paramaters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDTO>(query, paramaters);
@@ -59,7 +59,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         {
             string query = "Update Product Set DealOfTheDay=0 where ProductID=@productID";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId", id);
+            parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
@@ -70,7 +70,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         {
             string query = "Update Product Set DealOfTheDay=1 where ProductID=@productID";
             var parameters = new DynamicParameters();
-            parameters.Add("@employeeId",id);
+            parameters.Add("@productID", id);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
