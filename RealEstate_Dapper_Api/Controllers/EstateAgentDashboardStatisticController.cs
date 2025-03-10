@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Repositories.EstateAgentRepository.DashboardRepository.StatisticRepository;
 
@@ -15,25 +16,25 @@ namespace RealEstate_Dapper_Api.Controllers
 			_statisticRepository = statisticRepository;
 		}
 
-		[HttpGet("ActiveCategoryCount")]
-		public IActionResult ActiveCategoryCount()
+		[HttpGet("ProductCountByEmployeeID")]
+		public IActionResult ProductCountByEmployeeID(int id)
 		{
-			return Ok(_statisticsRepository.ActiveCategoryCount());
+			return Ok(_statisticRepository.ProductCountByEmployeeID(id));
 		}
-		[HttpGet("ActiveCategoryCount")]
-		public IActionResult ActiveCategoryCount()
+		[HttpGet("ProductCountByStatusTrue")]
+		public IActionResult ProductCountByStatusTrue(int id)
 		{
-			return Ok(_statisticsRepository.ActiveCategoryCount());
+			return Ok(_statisticRepository.ProductCountByStatusTrue(id));
 		}
-		[HttpGet("ActiveCategoryCount")]
-		public IActionResult ActiveCategoryCount()
+		[HttpGet("ProductCountByStatusFalse")]
+		public IActionResult ProductCountByStatusFalse(int id)
 		{
-			return Ok(_statisticsRepository.ActiveCategoryCount());
+			return Ok(_statisticRepository.ProductCountByStatusFalse(id));
 		}
-		[HttpGet("ActiveCategoryCount")]
-		public IActionResult ActiveCategoryCount()
+		[HttpGet("AllProductCount")]
+		public IActionResult AllProductCount()
 		{
-			return Ok(_statisticsRepository.ActiveCategoryCount());
+			return Ok(_statisticRepository.AllProductCount());
 		}
 	}
 }
