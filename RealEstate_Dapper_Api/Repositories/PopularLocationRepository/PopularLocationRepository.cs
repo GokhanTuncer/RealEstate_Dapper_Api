@@ -4,11 +4,11 @@ using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.PopularLocationRepository
 {
-    public class StatisticRepository : IPopularLocationRepository
+    public class PopularLocationRepository : IPopularLocationRepository
     {
         private readonly Context _context;
 
-        public StatisticRepository(Context context)
+        public PopularLocationRepository(Context context)
         {
             _context = context;
         }
