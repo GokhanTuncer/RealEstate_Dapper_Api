@@ -1,8 +1,6 @@
 ﻿using Dapper;
-using RealEstate_Dapper_Api.DTOs.CategoryDTOs;
 using RealEstate_Dapper_Api.DTOs.MessageDTOs;
 using RealEstate_Dapper_Api.Models.DapperContext;
-using RealEstate_Dapper_Api.Repositories.CategoryRepository;
 
 namespace RealEstate_Dapper_Api.Repositories.MessageRepository
 {
@@ -17,7 +15,7 @@ namespace RealEstate_Dapper_Api.Repositories.MessageRepository
 
         public async Task<List<ResultInBoxMessageDTO>> GetInBoxLast3MessageListByReceiver(int id)
         {
-            string query = "SELECT Top(3) * FROM Message WHERE Receiver = @receiverId Order By MessageID Desc";
+            string query = "Select Top(3) MessageId,Name,Subject,Detail,SendDate,IsRead,UserImageUrl From Message Inner Join AppUser On Message.Sender=AppUser.UserId Where Receiver=@receiverId Order By MessageId Desc";
             var parameters = new DynamicParameters();
             parameters.Add("@receiverId", id);
             using (var connection = _context.CreateConnection())
