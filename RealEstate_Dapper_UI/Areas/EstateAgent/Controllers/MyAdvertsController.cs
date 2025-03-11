@@ -21,23 +21,24 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         {
             var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44382/api/Products/GetProductAdvertListByEmployeeByTrue?id=" + id);
-            if (response.IsSuccessStatusCode)
+            var responseMessage = await client.GetAsync("https://localhost:44382/api/Products/ProductAdvertsListByEmployeeByTrue?id=" + id);
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDTO>>(jsonData);
                 return View(values);
             }
             return View();
         }
+
         public async Task<IActionResult> PassiveAdverts()
         {
             var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44382/api/Products/GetProductAdvertListByEmployeeByFalse?id=" + id);
-            if (response.IsSuccessStatusCode)
+            var responseMessage = await client.GetAsync("https://localhost:44382/api/Products/ProductAdvertListByEmployeeByFalse?id=" + id);
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDTO>>(jsonData);
                 return View(values);
             }

@@ -45,24 +45,23 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByFalse(int id)
         {
-            string query = "SELECT ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay FROM Product INNER JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID =@employeeID and ProductStatus=false";
-            var paramaters = new DynamicParameters();
-            paramaters.Add("@employeeID", id);
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheday From Product inner join Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeId and ProductStatus=0";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDTO>(query, paramaters);
+                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDTO>(query, parameters);
                 return values.ToList();
             }
         }
-
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDTO>> GetProductAdvertListByEmployeeAsyncByTrue(int id)
         {
-            string query = "SELECT ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay FROM Product INNER JOIN Category on Product.ProductCategory=Category.CategoryID where EmployeeID =@employeeID and ProductStatus=true";
-            var paramaters = new DynamicParameters();
-            paramaters.Add("@employeeID", id);
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheday From Product inner join Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeId and ProductStatus=1";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDTO>(query, paramaters);
+                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDTO>(query, parameters);
                 return values.ToList();
             }
         }
