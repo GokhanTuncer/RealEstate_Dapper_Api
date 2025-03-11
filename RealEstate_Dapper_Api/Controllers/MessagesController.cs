@@ -17,7 +17,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInBoxLast3MessageListByReceiver(int id)
         {
-            var values = _messageRepository.GetInBoxLast3MessageListByReceiver(id);
+            var values = await _messageRepository.GetInBoxLast3MessageListByReceiver(id);
             return Ok(values);
         }
     }
