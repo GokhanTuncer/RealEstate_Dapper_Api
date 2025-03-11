@@ -4,6 +4,6 @@ namespace RealEstate_Dapper_Api.Repositories.MessageRepository
 {
     public interface IMessageRepository
     {
-        Task<ResultInBoxMessageDTO> GetInBoxLast3MessageListByReceiver(int id);
+        Task<List<ResultInBoxMessageDTO>> GetInBoxLast3MessageListByReceiver(int id);
     }
 }
