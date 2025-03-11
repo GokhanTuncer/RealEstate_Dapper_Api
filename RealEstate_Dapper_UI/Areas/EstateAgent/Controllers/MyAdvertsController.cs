@@ -11,9 +11,10 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;
 
-        public MyAdvertsController(IHttpClientFactory httpClientFactory)
+        public MyAdvertsController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
         public async Task<IActionResult> Index()
