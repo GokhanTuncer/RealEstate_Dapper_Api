@@ -105,7 +105,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIDDTO> GetProductDetailByProductID(int id)
         {
-            string query = "Select * From ProductDetails Where ProductId=@productId";
+            string query = "Select * From ProductDetails Where ProductID=@productId";
             var parameters = new DynamicParameters();
             parameters.Add("@productId", id);
             using (var connection = _context.CreateConnection())
