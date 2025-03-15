@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.DTOs.ProductDetailDTOs;
 using RealEstate_Dapper_UI.DTOs.ProductDTOs;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
@@ -27,10 +27,35 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> PropertySingle()
+        public async Task<IActionResult> PropertySingle(int id)
         {
-			return View();
-		}
+            id = 1;
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44382/api/Products/GetProductByProductID?id=" + id);
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<ResultProductDTO>(jsonData);
+
+            var client2 = _httpClientFactory.CreateClient();
+            var responseMessage2 = await client2.GetAsync("https://localhost:44382/api/ProductDetails/GetProductDetailByProductID?id=" + id);
+            var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+            var values2 = JsonConvert.DeserializeObject<GetProductDetailByIDDTO>(jsonData2);
+
+            ViewBag.title1= values.title.ToString();
+            ViewBag.price = values.price;
+            ViewBag.city = values.city;
+            ViewBag.district = values.district;
+            ViewBag.address = values.address;
+            ViewBag.type = values.type;
+
+            ViewBag.bathCount = values2.bathCount;
+            ViewBag.bedRoomCount = values2.bedRoomCount;
+            ViewBag.buildYear = values2.buildYear;
+
+
+            return View();
+
+           
+        }
 
     }
 }
