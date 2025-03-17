@@ -15,9 +15,9 @@ namespace RealEstate_Dapper_Api.Repositories.AppUserRepository
         }
         public async Task<GetAppUserByProductIDDTO> GetAppUserByProductID(int id)
         {
-            string query = "SELECT * FROM AppUser WHERE AppUserID = @AppUserID";
+            string query = "SELECT * FROM AppUser WHERE AppUserID = @UserID";
             var parameters = new DynamicParameters();
-            parameters.Add("@AppUserID", id);
+            parameters.Add("@UserID", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<GetAppUserByProductIDDTO>(query, parameters);
