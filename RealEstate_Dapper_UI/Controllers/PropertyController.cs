@@ -55,6 +55,8 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.garageCount = values2.garageSize;
             ViewBag.buildYear = values2.buildYear;
             ViewBag.date = values2.AdvertisementDate;
+            ViewBag.location = values2.location;
+            ViewBag.videoUrl = values2.videoUrl;
 
             DateTime date1 = DateTime.Now;
             DateTime date2 = values.AdvertisementDate;
