@@ -16,10 +16,12 @@ namespace RealEstate_Dapper_UI.Controllers
         }
 
         [HttpPost]
-        public IActionResult PartialSearch(string p)
+        public IActionResult PartialSearch(string searchKeyValue, int propertyCategoryId, string city)
         {
-            TempData["word"] = p;
-            return RedirectToAction("PropertyListWithSearch","Property");
+            TempData["searchKeyValue"] = searchKeyValue;
+            TempData["propertyCategoryId"] = propertyCategoryId;
+            TempData["city"] = city;
+            return RedirectToAction("PropertyListWithSearch", "Property");
         }
     }
 }
