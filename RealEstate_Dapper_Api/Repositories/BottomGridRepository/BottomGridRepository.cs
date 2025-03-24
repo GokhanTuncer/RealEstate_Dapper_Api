@@ -38,7 +38,7 @@ namespace RealEstate_Dapper_Api.Repositories.BottomGridRepository
             }
         }
 
-		public async Task<List<ResultBottomGridDTO>> GetAllBottomGridAsync()
+		public async Task<List<ResultBottomGridDTO>> GetAllBottomGrid()
 		{
 			string query = "SELECT * FROM BottomGrid";
 			using (var connection = _context.CreateConnection())

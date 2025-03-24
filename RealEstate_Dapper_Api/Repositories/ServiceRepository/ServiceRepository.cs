@@ -34,7 +34,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
             }
         }
 
-        public async Task<List<ResultServiceDTO>> GetAllServiceAsync()
+        public async Task<List<ResultServiceDTO>> GetAllService()
         {
             string query = "Select * From Service";
             using (var connection = _context.CreateConnection())

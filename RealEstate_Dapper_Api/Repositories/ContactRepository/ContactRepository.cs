@@ -22,7 +22,7 @@ namespace RealEstate_Dapper_Api.Repositories.ContactRepository
 			throw new NotImplementedException();
 		}
 
-		public Task<List<ResultContactDTO>> GetAllContactAsync()
+		public Task<List<ResultContactDTO>> GetAllContact()
 		{
 			throw new NotImplementedException();
 		}

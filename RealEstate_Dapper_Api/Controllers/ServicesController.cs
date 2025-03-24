@@ -17,7 +17,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetServiceList()
         {
-            var value = await _serviceRepository.GetAllServiceAsync();
+            var value = await _serviceRepository.GetAllService();
             return Ok(value);
         }
         [HttpPost]

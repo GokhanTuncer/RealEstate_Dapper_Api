@@ -18,7 +18,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> PopularLocationList()
         {
-            var value = await _locationRepository.GetAllPopularLocationAsync();
+            var value = await _locationRepository.GetAllPopularLocation();
             return Ok(value);
         }
         [HttpPost]
