@@ -23,4 +23,5 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             }
             return View();
         }
+    }
 }
