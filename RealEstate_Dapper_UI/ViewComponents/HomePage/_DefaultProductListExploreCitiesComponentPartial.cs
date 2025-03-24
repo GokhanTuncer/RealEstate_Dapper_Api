@@ -22,10 +22,9 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri(_apiSettings.BaseUrl);
             var responseMessage = await client.GetAsync("PopularLocations");
-            var response = await client.GetAsync("https://localhost:44382/api/PopularLocations");
-            if (response.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await response.Content.ReadAsStringAsync();
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultPopularLocationDTOs>>(jsonData);
                 return View(values);
             }
