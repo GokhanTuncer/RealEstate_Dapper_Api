@@ -13,7 +13,7 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 		{
 			_context = context;
 		}
-		public async void CreateWhoWeareDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
+		public async Task CreateWhoWeareDetail(CreateWhoWeAreDetailDTO createWhoWeAreDetailDTO)
 		{
 
 			string query = "INSERT INTO WhoWeAreDetail (Title, SubTitle,Description1,Description2) VALUES (@title, @subTitle,@description1,@description2)";  
@@ -28,9 +28,9 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 			}
 		}
 
-		public async void DeleteWhoWeareDetail(int id)
+		public async Task DeleteWhoWeareDetail(int id)
 		{
-			string query = "DELETE FROM WhoWeAreDetail WHERE WhoWeAreDetailID = @whoWeAreDetailID";  //Kategori silinir
+			string query = "DELETE FROM WhoWeAreDetail WHERE WhoWeAreDetailID = @whoWeAreDetailID";  
 			var parameters = new DynamicParameters();
 			parameters.Add("@whoWeareDetailID", id);
 			using (var connection = _context.CreateConnection())
@@ -39,9 +39,9 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 			}
 		}
 
-		public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeareDetailAsync()
+		public async Task<List<ResultWhoWeAreDetailDTO>> GetAllWhoWeareDetail()
 		{
-			string query = "SELECT * FROM WhoWeAreDetail";  //Kategori çağırılır
+			string query = "SELECT * FROM WhoWeAreDetail";  
 			using (var connection = _context.CreateConnection())
 			{
 				var values = await connection.QueryAsync<ResultWhoWeAreDetailDTO>(query);
@@ -61,7 +61,7 @@ namespace RealEstate_Dapper_Api.Repositories.WhoWeAreRepository
 			}
 		}
 
-		public async void UpdateWhoWeareDetail(UpdateWhoWeareDetailDTO updateWhoWeareDetailDTO)
+		public async Task UpdateWhoWeareDetail(UpdateWhoWeareDetailDTO updateWhoWeareDetailDTO)
 		{
 			string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
 			var parameters = new DynamicParameters();
