@@ -64,7 +64,7 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepository
 
         public async Task UpdateEmployee(UpdateEmployeeDTO updateEmployeeDTO)
         {
-            string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageURL=@imageURL,Status=@status where EmployeeID=@employeeId";
+            string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageURL=@imageURL,Status=@status where EmployeeID=@employeeID";
             var parameters = new DynamicParameters();
             parameters.Add("@name", updateEmployeeDTO.Name);
             parameters.Add("@title", updateEmployeeDTO.Title);
@@ -72,7 +72,7 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepository
             parameters.Add("@phoneNumber", updateEmployeeDTO.PhoneNumber);
             parameters.Add("@imageUrl", updateEmployeeDTO.ImageURL);
             parameters.Add("@status", updateEmployeeDTO.Status);
-            parameters.Add("@employeeId", updateEmployeeDTO.EmployeeID);
+            parameters.Add("@employeeID", updateEmployeeDTO.EmployeeID);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);

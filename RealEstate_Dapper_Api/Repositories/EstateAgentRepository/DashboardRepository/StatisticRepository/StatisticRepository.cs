@@ -22,9 +22,9 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepository.DashboardRepo
 
 		public int ProductCountByEmployeeID(int id)
 		{
-			string query = "Select Count(*) From Product where EmployeeID = @employeeId";
+			string query = "Select Count(*) From Product where EmployeeID = @employeeID";
 			var parameters = new DynamicParameters();
-			parameters.Add("@employeeId", id);
+			parameters.Add("@employeeID", id);
 			using (var connection = _context.CreateConnection())
 			{
 				var values = connection.QueryFirstOrDefault<int>(query, parameters);

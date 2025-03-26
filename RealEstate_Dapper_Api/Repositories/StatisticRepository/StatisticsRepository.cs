@@ -123,7 +123,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticRepository
 
         public decimal LastProductPrice()
         {
-            string query = "Select Top(1) Price From Product Order By ProductId Desc";
+            string query = "Select Top(1) Price From Product Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<decimal>(query);
